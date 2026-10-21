@@ -28,12 +28,6 @@ const {
   optionalAuth,
 } = require('../middleware/auth');
 
-const {
-  getArticleSummary,
-  generateArticleSummary,
-  articleChatHandler,
-} = require('../controllers/articleSummaryController');
-
 const router = express.Router();
 
 // =====================================================
@@ -172,11 +166,6 @@ router.patch(
 
 // Recommended articles
 router.get('/:id/recommendations', optionalAuth, getRecommendedArticles);
-
-// AI Article Summarization (Groq Qwen)
-router.get('/:id/summary', optionalAuth, getArticleSummary);
-router.post('/:id/summarize', optionalAuth, generateArticleSummary);
-router.post('/:id/chat', optionalAuth, articleChatHandler);
 
 router.get('/:id', optionalAuth, getArticleById);
 
