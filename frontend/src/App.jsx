@@ -39,7 +39,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="min-h-screen flex flex-col md:flex-row bg-[#FAF7F2] text-stone-900 selection:bg-[#1A382B] selection:text-white">
+        <div className="min-h-screen flex flex-col md:flex-row bg-[#F4F8F5] text-stone-900 selection:bg-[#1D4936] selection:text-white">
           <AppSidebar />
 
           <div className="flex min-w-0 flex-1 flex-col">

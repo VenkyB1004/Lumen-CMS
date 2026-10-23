@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,15 +9,15 @@ export default {
     extend: {
       colors: {
         lumen: {
-          bg: '#FAF7F2',
+          bg: '#F4F8F5',
           surface: '#FFFFFF',
-          input: '#EFECE6',
-          border: '#EDE8DF',
-          primary: '#1A382B',
-          'primary-dark': '#11261D',
-          'primary-light': '#2D5442',
+          input: '#EFF5F0',
+          border: '#DCE8DF',
+          primary: '#1D4936',
+          'primary-dark': '#153A2A',
+          'primary-light': '#35634D',
           accent: '#D97736',
-          muted: '#767065',
+          muted: '#66766B',
         },
       },
       fontFamily: {

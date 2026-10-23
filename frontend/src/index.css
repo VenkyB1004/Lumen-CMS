@@ -2,9 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: light;
+  --lumen-bg: #f4f8f5;
+  --lumen-surface: #ffffff;
+  --lumen-input: #eff5f0;
+  --lumen-border: #dce8df;
+  --lumen-primary: #1d4936;
+  --lumen-primary-dark: #153a2a;
+  --lumen-muted: #66766b;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
 @layer base {
+  html {
+    background: var(--lumen-bg);
+  }
+
   body {
-    @apply bg-[#FAF7F2] text-stone-900 min-h-screen antialiased transition-colors duration-200;
+    @apply text-stone-900 min-h-screen antialiased transition-colors duration-200;
+    background: var(--lumen-bg);
     font-family: 'DM Sans', system-ui, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
@@ -12,27 +32,40 @@
   h1, h2, h3, .font-heading, .font-serif {
     font-family: 'Fraunces', Georgia, serif;
   }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 3px solid #4b8b67;
+    outline-offset: 2px;
+  }
 }
 
 /* Dark Mode Overrides */
 html.dark body {
-  background-color: #121614 !important;
+  background-color: #121a15 !important;
   color: #E2E8F0 !important;
 }
 
 html.dark .bg-white {
-  background-color: #1C221F !important;
+  background-color: #1b251e !important;
   color: #E2E8F0 !important;
-  border-color: #2D3732 !important;
+  border-color: #304238 !important;
 }
 
 html.dark .bg-\[\#FAF7F2\],
 html.dark .bg-\[\#FAF7F0\] {
-  background-color: #121614 !important;
+  background-color: #121a15 !important;
 }
 
 html.dark .bg-\[\#EFECE6\] {
-  background-color: #242C28 !important;
+  background-color: #243129 !important;
   color: #E2E8F0 !important;
 }
 
@@ -48,7 +81,7 @@ html.dark .text-stone-600 {
 
 html.dark .border-\[\#EDE8DF\],
 html.dark .border-\[\#F5F2EB\] {
-  border-color: #2D3732 !important;
+  border-color: #304238 !important;
 }
 
 /* Custom editorial scrollbars */
@@ -58,38 +91,133 @@ html.dark .border-\[\#F5F2EB\] {
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAF7F2;
+  background: #F4F8F5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D5CEBF;
-  border-radius: 4px;
+  background: #bdcfc2;
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #B8B0A0;
+  background: #8eaa97;
 }
 
 /* Lumen Card styling */
 .lumen-card {
-  background: #FFFFFF;
-  border: 1px solid #EDE8DF;
-  border-radius: 1.5rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
+  background: var(--lumen-surface);
+  border: 1px solid var(--lumen-border);
+  border-radius: 1.25rem;
+  box-shadow: 0 1px 2px rgba(23, 54, 37, 0.025), 0 10px 28px rgba(23, 54, 37, 0.035);
 }
 
 /* Lumen Input styling */
 .lumen-input {
-  background: #EFECE6;
-  border: 1px solid transparent;
-  border-radius: 0.875rem;
+  background: var(--lumen-input);
+  border: 1px solid var(--lumen-border);
+  border-radius: 0.75rem;
   color: #1C1917;
   transition: all 0.15s ease-in-out;
 }
 
 .lumen-input:focus {
-  background: #FFFFFF;
-  border-color: #1A382B;
+  background: var(--lumen-surface);
+  border-color: var(--lumen-primary);
   outline: none;
-  box-shadow: 0 0 0 2px rgba(26, 56, 43, 0.15);
+  box-shadow: 0 0 0 3px rgba(29, 73, 54, 0.14);
+}
+
+.bg-\[\#FAF7F2\] {
+  background-color: #f2f7f3;
+}
+
+.bg-\[\#EFECE6\] {
+  background-color: #eaf1eb;
+}
+
+.border-\[\#EDE8DF\],
+.border-\[\#F5F2EB\] {
+  border-color: var(--lumen-border);
+}
+
+.lumen-admin-theme {
+  --admin-bg: #f0f5f2;
+  --admin-surface: #ffffff;
+  --admin-border: #d9e5dc;
+  --admin-ink: #183a2a;
+  --admin-muted: #607166;
+  color: #25372c;
+  border-radius: 1.5rem;
+  background: var(--admin-bg);
+}
+
+.lumen-admin-theme .bg-white {
+  background-color: var(--admin-surface);
+  border-color: var(--admin-border);
+  box-shadow: 0 1px 2px rgba(21, 58, 42, 0.03), 0 8px 24px rgba(21, 58, 42, 0.035);
+}
+
+.lumen-admin-theme .bg-\[\#FAF7F2\],
+.lumen-admin-theme .bg-\[\#FAF7F0\] {
+  background-color: var(--admin-bg);
+}
+
+.lumen-admin-theme .border-\[\#EDE8DF\],
+.lumen-admin-theme .border-\[\#F5F2EB\] {
+  border-color: var(--admin-border);
+}
+
+.lumen-admin-theme .bg-\[\#1A382B\] {
+  background-color: var(--admin-ink);
+}
+
+.lumen-admin-theme .text-stone-500 {
+  color: var(--admin-muted);
+}
+
+.lumen-admin-theme input,
+.lumen-admin-theme select,
+.lumen-admin-theme textarea {
+  border-color: var(--admin-border);
+}
+
+.lumen-admin-theme table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.lumen-admin-theme thead th {
+  color: #53675a;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lumen-admin-theme tbody tr {
+  transition: background-color 140ms ease;
+}
+
+.lumen-admin-theme tbody tr:hover {
+  background-color: #f5f8f5;
+}
+
+.lumen-admin-theme button:focus-visible,
+.lumen-admin-theme a:focus-visible,
+.lumen-admin-theme input:focus-visible,
+.lumen-admin-theme select:focus-visible,
+.lumen-admin-theme textarea:focus-visible {
+  outline: 3px solid #4b8b67;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

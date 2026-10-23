@@ -24,28 +24,30 @@ export const HomePage = () => {
   const { isAuthenticated, user } = useAuth();
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-10 lg:py-12 space-y-8 sm:space-y-10">
       {/* Hero Banner */}
-      <div className="bg-white border border-[#EDE8DF] rounded-3xl p-8 sm:p-14 shadow-xs text-center space-y-6 relative overflow-hidden">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#FAF7F2] border border-[#EDE8DF] rounded-full text-xs font-semibold text-stone-700">
+      <div className="relative overflow-hidden rounded-[2rem] border border-[#DCE8DF] bg-gradient-to-br from-white via-white to-emerald-50/80 p-6 shadow-sm shadow-emerald-950/[0.04] sm:p-10 lg:p-14">
+        <div className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-emerald-100/50 blur-3xl" aria-hidden="true" />
+        <div className="relative max-w-3xl space-y-5 sm:space-y-6">
+        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-emerald-50/80 px-3.5 py-1.5 text-xs font-semibold text-emerald-900">
           <Sparkles className="w-3.5 h-3.5 text-[#D97736]" />
           Editorial Content & Knowledge Platform
         </div>
 
-        <h1 className="font-serif text-4xl sm:text-5xl font-bold text-stone-900 tracking-tight max-w-3xl mx-auto leading-tight">
+        <h1 className="max-w-3xl font-serif text-4xl font-bold leading-[1.08] tracking-tight text-stone-900 sm:text-5xl lg:text-6xl">
           Where Thoughtful Writing Meets Interactive Knowledge
         </h1>
 
-        <p className="text-xs sm:text-base text-stone-600 max-w-2xl mx-auto font-normal leading-relaxed">
+        <p className="max-w-2xl text-sm font-normal leading-relaxed text-stone-600 sm:text-base">
           Lumen is an editorial publishing platform designed for curious
           readers, subject matter authors, and editorial teams.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+        <div className="flex flex-wrap items-center gap-3 pt-1">
           {isAuthenticated ? (
             <Link
               to="/profile"
-              className="px-6 py-3 bg-[#1A382B] hover:bg-[#11261D] text-white text-xs sm:text-sm font-bold rounded-xl shadow-xs transition flex items-center gap-2"
+              className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[#1D4936] px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#153A2A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D4936]"
             >
               <span>Go to My Profile ({user?.role})</span>
               <ArrowRight className="w-4 h-4" />
@@ -54,7 +56,7 @@ export const HomePage = () => {
             <>
               <Link
                 to="/register"
-                className="px-6 py-3 bg-[#1A382B] hover:bg-[#11261D] text-white text-xs sm:text-sm font-bold rounded-xl shadow-xs transition flex items-center gap-2"
+                className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[#1D4936] px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#153A2A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D4936]"
               >
                 <span>Get Started</span>
                 <ArrowRight className="w-4 h-4" />
@@ -62,7 +64,7 @@ export const HomePage = () => {
 
               <Link
                 to="/login"
-                className="px-6 py-3 bg-[#EFECE6] hover:bg-[#E7E2D9] text-stone-800 text-xs sm:text-sm font-semibold rounded-xl transition"
+                className="inline-flex min-h-11 items-center rounded-xl border border-[#DCE8DF] bg-white px-5 py-3 text-sm font-semibold text-stone-800 transition hover:bg-emerald-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D4936]"
               >
                 Sign In
               </Link>
@@ -70,49 +72,50 @@ export const HomePage = () => {
           )}
         </div>
       </div>
+      </div>
 
       {/* Platform Pillars */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white border border-[#EDE8DF] rounded-3xl p-6 shadow-xs space-y-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+        <div className="rounded-2xl border border-[#DCE8DF] bg-white p-5 shadow-sm shadow-emerald-950/[0.03] sm:p-6">
           <div className="w-10 h-10 rounded-2xl bg-emerald-50 text-[#1A382B] flex items-center justify-center font-bold">
             <BookOpen className="w-5 h-5" />
           </div>
 
-          <h2 className="font-serif text-lg font-bold text-stone-900">
+          <h2 className="mt-4 font-serif text-lg font-bold text-stone-900">
             In-Depth Articles
           </h2>
 
-          <p className="text-xs text-stone-600 leading-relaxed">
+          <p className="mt-2 text-sm leading-relaxed text-stone-600">
             Curated essays, technical deep-dives, and investigative science
             journalism written by domain experts.
           </p>
         </div>
 
-        <div className="bg-white border border-[#EDE8DF] rounded-3xl p-6 shadow-xs space-y-3">
+        <div className="rounded-2xl border border-[#DCE8DF] bg-white p-5 shadow-sm shadow-emerald-950/[0.03] sm:p-6">
           <div className="w-10 h-10 rounded-2xl bg-amber-50 text-[#D97736] flex items-center justify-center font-bold">
             <PenLine className="w-5 h-5" />
           </div>
 
-          <h2 className="font-serif text-lg font-bold text-stone-900">
+          <h2 className="mt-4 font-serif text-lg font-bold text-stone-900">
             Interactive Knowledge
           </h2>
 
-          <p className="text-xs text-stone-600 leading-relaxed">
+          <p className="mt-2 text-sm leading-relaxed text-stone-600">
             Test and consolidate your understanding with article-aligned
             quizzes and concept checkpoints.
           </p>
         </div>
 
-        <div className="bg-white border border-[#EDE8DF] rounded-3xl p-6 shadow-xs space-y-3">
+        <div className="rounded-2xl border border-[#DCE8DF] bg-white p-5 shadow-sm shadow-emerald-950/[0.03] sm:p-6">
           <div className="w-10 h-10 rounded-2xl bg-purple-50 text-purple-800 flex items-center justify-center font-bold">
             <ShieldCheck className="w-5 h-5" />
           </div>
 
-          <h2 className="font-serif text-lg font-bold text-stone-900">
+          <h2 className="mt-4 font-serif text-lg font-bold text-stone-900">
             Editorial Standards
           </h2>
 
-          <p className="text-xs text-stone-600 leading-relaxed">
+          <p className="mt-2 text-sm leading-relaxed text-stone-600">
             Every submission undergoes rigorous peer review and editorial
             moderation before publication.
           </p>
@@ -195,12 +198,12 @@ export const BrowsePage = () => {
 
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-9 lg:py-10 space-y-6 sm:space-y-8">
 
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="font-serif text-3xl font-bold text-stone-900">
+          <h1 className="font-serif text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">
             Browse Articles & Topics
           </h1>
 
@@ -210,13 +213,14 @@ export const BrowsePage = () => {
         </div>
 
         {/* Search */}
-        <div className="relative w-full md:w-72">
+        <div className="relative w-full md:w-80">
           <input
             type="text"
+            aria-label="Search articles or topics"
             placeholder="Search articles or topics..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 bg-white border border-[#EDE8DF] rounded-xl text-xs text-stone-900 focus:outline-none focus:border-[#1A382B]"
+            className="min-h-11 w-full rounded-xl border border-[#DCE8DF] bg-white py-2 pl-10 pr-4 text-sm text-stone-900 shadow-sm shadow-emerald-950/[0.02] placeholder:text-stone-400 focus:border-[#1D4936] focus:outline-none focus:ring-2 focus:ring-emerald-800/10"
           />
 
           <Search className="w-4 h-4 text-stone-400 absolute left-3 top-2.5" />
@@ -224,16 +228,17 @@ export const BrowsePage = () => {
       </div>
 
       {/* Category Pills */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2">
+      <div aria-label="Filter articles by topic" className="flex items-center gap-2 overflow-x-auto pb-2">
         {categories.map((cat) => (
           <button
             key={cat}
             type="button"
             onClick={() => setSelectedCategory(cat)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
+            aria-pressed={selectedCategory === cat}
+            className={`min-h-10 rounded-full px-4 py-2 text-xs font-semibold whitespace-nowrap transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D4936] ${
               selectedCategory === cat
-                ? 'bg-[#1A382B] text-white shadow-2xs'
-                : 'bg-white border border-[#EDE8DF] text-stone-700 hover:bg-[#EFECE6]'
+                ? 'bg-[#1D4936] text-white shadow-sm'
+                : 'border border-[#DCE8DF] bg-white text-stone-700 hover:bg-emerald-50'
             }`}
           >
             {cat}
@@ -251,19 +256,19 @@ export const BrowsePage = () => {
           No articles found.
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:gap-5">
 
           {filteredArticles.map((article) => (
             <Link
               key={article._id}
               to={`/browse/${article._id}`}
-              className="bg-white border border-[#EDE8DF] rounded-3xl p-6 shadow-xs space-y-3 hover:border-stone-400 transition"
+              className="group rounded-2xl border border-[#DCE8DF] bg-white p-5 shadow-sm shadow-emerald-950/[0.03] transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D4936] sm:p-6"
             >
 
               {/* Category + Views */}
               <div className="flex items-center justify-between text-xs text-stone-500">
 
-                <span className="font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-800">
                   {article.category}
                 </span>
 
@@ -275,12 +280,12 @@ export const BrowsePage = () => {
               </div>
 
               {/* Title */}
-              <h3 className="font-serif text-xl font-bold text-stone-900">
+              <h3 className="font-serif text-xl font-bold leading-snug text-stone-900 transition-colors group-hover:text-emerald-900">
                 {article.title}
               </h3>
 
               {/* Description */}
-              <p className="text-xs text-stone-600 leading-relaxed">
+              <p className="text-sm leading-relaxed text-stone-600">
                 {article.description}
               </p>
 
@@ -630,4 +635,3 @@ export const AdminPage = () => {
     </div>
   );
 };
-

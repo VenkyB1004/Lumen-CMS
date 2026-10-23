@@ -284,10 +284,10 @@ const AIModerationDashboard = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-6 rounded-2xl text-white shadow-xl">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-emerald-950 via-emerald-900 to-slate-900 p-6 rounded-2xl text-white shadow-xl">
         <div className="flex items-center gap-4">
-          <div className="p-3 bg-indigo-500/20 border border-indigo-400/30 rounded-xl backdrop-blur-md">
-            <Bot className="w-7 h-7 text-indigo-300" />
+          <div className="p-3 bg-emerald-500/20 border border-emerald-400/30 rounded-xl backdrop-blur-md">
+            <Bot className="w-7 h-7 text-emerald-200" />
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -305,7 +305,7 @@ const AIModerationDashboard = () => {
           <button
             onClick={handleScanAll}
             disabled={scanningAll || rescanningAll || loading}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 border border-indigo-400/40 text-white font-medium text-sm transition-all shadow-md self-start md:self-auto disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 border border-emerald-400/40 text-white font-medium text-sm transition-all shadow-md self-start md:self-auto disabled:opacity-50"
           >
             <Sparkles className={`w-4 h-4 ${scanningAll ? 'animate-spin' : ''}`} />
             {scanningAll ? 'Scanning...' : 'Scan New Items'}

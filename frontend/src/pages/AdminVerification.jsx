@@ -579,12 +579,14 @@ function AdminVerification() {
                 (item) => (
 
                   <button
+                    type="button"
                     className={`queue-item ${
                       selectedItem?.id ===
                       item.id
                         ? "selected"
                         : ""
                     }`}
+                    aria-pressed={selectedItem?.id === item.id}
                     key={`${item.type}-${item.id}`}
                     onClick={() =>
                       setSelectedItem(item)

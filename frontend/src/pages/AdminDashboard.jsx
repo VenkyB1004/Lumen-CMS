@@ -1408,7 +1408,7 @@ const [reviewingArticle, setReviewingArticle] = useState(false);
   // ==========================================
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-6">
+    <div className="lumen-admin-theme mx-auto w-full max-w-[1600px] space-y-6 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
 
       {/* Notifications */}
 
@@ -1420,6 +1420,8 @@ const [reviewingArticle, setReviewingArticle] = useState(false);
           </div>
 
           <button
+            type="button"
+            aria-label="Dismiss success message"
             onClick={() => setSuccessMsg('')}
           >
             <X className="w-4 h-4" />
@@ -1436,6 +1438,8 @@ const [reviewingArticle, setReviewingArticle] = useState(false);
           </div>
 
           <button
+            type="button"
+            aria-label="Dismiss error message"
             onClick={() => setError('')}
           >
             <X className="w-4 h-4" />
@@ -1450,16 +1454,16 @@ const [reviewingArticle, setReviewingArticle] = useState(false);
 
         <div>
 
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-50 text-purple-900 border border-purple-200 rounded-full text-xs font-semibold mb-2">
+          <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-900">
             <ShieldCheck className="w-3.5 h-3.5" />
             Administrator Center
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-stone-900">
+          <h1 className="font-sans text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">
             Platform Management
           </h1>
 
-          <p className="text-xs text-stone-500 mt-1">
+          <p className="mt-2 text-sm text-stone-500">
             Welcome back, {user?.name || 'Administrator'}.
             Manage Lumen users and content from one place.
           </p>
@@ -1468,7 +1472,7 @@ const [reviewingArticle, setReviewingArticle] = useState(false);
 
         <button
           onClick={refreshAll}
-          className="self-start lg:self-auto inline-flex items-center gap-2 px-3.5 py-2 bg-white border border-[#EDE8DF] hover:bg-[#FAF7F2] text-stone-700 rounded-xl text-xs font-semibold"
+          className="inline-flex min-h-10 self-start items-center gap-2 rounded-xl border border-[#DCE8DF] bg-white px-4 py-2 text-sm font-semibold text-stone-700 transition hover:bg-[#F0F5F2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D4936] lg:self-auto"
         >
           <RefreshCw
             className={`w-3.5 h-3.5 ${
@@ -1486,7 +1490,7 @@ const [reviewingArticle, setReviewingArticle] = useState(false);
 
       {/* Admin Navigation */}
 
-      <div className="bg-white border border-[#EDE8DF] rounded-2xl p-1.5 overflow-x-auto">
+      <div role="group" aria-label="Admin dashboard sections" className="overflow-x-auto rounded-2xl border border-[#DCE8DF] bg-white p-1.5 shadow-sm shadow-emerald-950/[0.03]">
 
         <div className="flex min-w-max gap-1">
 
@@ -1497,13 +1501,15 @@ const [reviewingArticle, setReviewingArticle] = useState(false);
             return (
               <button
                 key={tab.id}
+                type="button"
+                aria-pressed={activeTab === tab.id}
                 onClick={() =>
                   handleTabChange(tab.id)
                 }
-                className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition ${
+                className={`inline-flex min-h-10 items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D4936] ${
                   activeTab === tab.id
-                    ? 'bg-[#1A382B] text-white'
-                    : 'text-stone-600 hover:bg-[#FAF7F2] hover:text-stone-900'
+                    ? 'bg-[#183A2A] text-white shadow-sm'
+                    : 'text-stone-600 hover:bg-[#F0F5F2] hover:text-stone-900'
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -1555,6 +1561,8 @@ const [reviewingArticle, setReviewingArticle] = useState(false);
               </div>
 
               <button
+                type="button"
+                aria-label="Close create user dialog"
                 onClick={() =>
                   setShowAddModal(false)
                 }

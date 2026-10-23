@@ -805,3 +805,166 @@ body,
     width: 100%;
   }
 }
+
+.admin-page {
+  background: #f0f5f2;
+  color: #25372c;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+.admin-content {
+  max-width: 1500px;
+  padding: clamp(24px, 4vw, 56px) clamp(16px, 4vw, 48px) 64px;
+}
+
+.page-heading {
+  margin-bottom: 32px;
+}
+
+.page-heading h1 {
+  color: #183a2a;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+}
+
+.page-heading p {
+  color: #607166;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.stats-grid {
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.stat-card {
+  min-height: 165px;
+  padding: 24px;
+  border-color: #d9e5dc;
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(21, 58, 42, 0.03), 0 8px 24px rgba(21, 58, 42, 0.035);
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  font-size: 22px;
+}
+
+.stat-card strong {
+  margin-bottom: 8px;
+  color: #183a2a;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 34px;
+  font-weight: 750;
+}
+
+.stat-card span {
+  color: #607166;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.review-section h2 {
+  margin-bottom: 18px;
+  color: #183a2a;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+}
+
+.review-layout {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 18px;
+}
+
+.queue {
+  gap: 12px;
+}
+
+.queue-item,
+.review-panel {
+  border-color: #d9e5dc;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(21, 58, 42, 0.025), 0 6px 18px rgba(21, 58, 42, 0.03);
+}
+
+.queue-item {
+  min-height: 100px;
+  padding: 20px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+.queue-item:hover,
+.queue-item.selected {
+  border-color: #5d8b6d;
+  background: #f6faf7;
+}
+
+.queue-item:focus-visible,
+.admin-page button:focus-visible,
+.admin-page a:focus-visible,
+.admin-page input:focus-visible,
+.admin-page select:focus-visible,
+.admin-page textarea:focus-visible {
+  outline: 3px solid #4b8b67;
+  outline-offset: 2px;
+}
+
+.content-header {
+  border-color: #d9e5dc;
+}
+
+.content-header h2,
+.content-body h3,
+.review-panel h2 {
+  color: #183a2a;
+}
+
+.content-body,
+.article-meta {
+  color: #46594d;
+  line-height: 1.65;
+}
+
+.review-actions button,
+.modal-actions button {
+  min-height: 42px;
+  border-radius: 10px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .admin-content {
+    padding: 28px 16px 40px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .stat-card {
+    min-height: 140px;
+    padding: 18px;
+  }
+
+  .stat-card strong {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 380px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
