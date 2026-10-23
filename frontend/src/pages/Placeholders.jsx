@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import ForYouFeed from '../components/recommendations/ForYouFeed';
+import RecommendationBadge from '../components/recommendations/RecommendationBadge';
 import {
   BookOpen,
   LayoutGrid,
@@ -70,6 +72,23 @@ export const HomePage = () => {
           )}
         </div>
       </div>
+      {/* Editorial Tabs: Trending & For You (Lumen 2 Design) */}
+      <section className="space-y-6">
+        <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-blue-600 text-white rounded-xl text-xs font-bold shadow-xs">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>For You</span>
+            </div>
+            <span className="text-xs font-medium text-slate-500">
+              Personalized dispatches curated for your reading interests
+            </span>
+          </div>
+        </div>
+
+        {/* Your Dynamic Recommendation Feed */}
+        <ForYouFeed />
+      </section>
 
       {/* Platform Pillars */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -128,6 +147,7 @@ export const HomePage = () => {
 export const BrowsePage = () => {
   const categories = [
     'All Topics',
+    'For You',
     'Science',
     'Technology',
     'Environment',
@@ -223,22 +243,32 @@ export const BrowsePage = () => {
         </div>
       </div>
 
-      {/* Category Pills */}
+  {/* Category Pills */}
       <div className="flex items-center gap-2 overflow-x-auto pb-2">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            type="button"
-            onClick={() => setSelectedCategory(cat)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
-              selectedCategory === cat
-                ? 'bg-[#1A382B] text-white shadow-2xs'
-                : 'bg-white border border-[#EDE8DF] text-stone-700 hover:bg-[#EFECE6]'
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
+        {categories.map((cat) => {
+          const isForYou = cat === 'For You';
+          const isSelected = selectedCategory === cat;
+
+          return (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition flex items-center gap-1.5 ${
+                isSelected
+                  ? isForYou
+                    ? 'bg-blue-600 text-white shadow-xs'
+                    : 'bg-[#1A382B] text-white shadow-xs'
+                  : isForYou
+                  ? 'bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100'
+                  : 'bg-white border border-[#EDE8DF] text-stone-700 hover:bg-[#EFECE6]'
+              }`}
+            >
+              {isForYou && <Sparkles className="w-3.5 h-3.5" />}
+              {cat}
+            </button>
+          );
+        })}
       </div>
 
       {/* Articles */}
@@ -260,19 +290,22 @@ export const BrowsePage = () => {
               className="bg-white border border-[#EDE8DF] rounded-3xl p-6 shadow-xs space-y-3 hover:border-stone-400 transition"
             >
 
-              {/* Category + Views */}
-              <div className="flex items-center justify-between text-xs text-stone-500">
+            {/* Category + Views */}
+<div className="flex items-center justify-between text-xs text-stone-500">
+  <div className="flex items-center gap-2">
+    <span className="font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+      {article.category}
+    </span>
+    {article.recommendation && (
+      <RecommendationBadge recommendation={article.recommendation} />
+    )}
+  </div>
 
-                <span className="font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                  {article.category}
-                </span>
-
-                <span className="flex items-center gap-1">
-                  <Eye className="w-3.5 h-3.5" />
-                  {article.views || 0}
-                </span>
-
-              </div>
+  <span className="flex items-center gap-1">
+    <Eye className="w-3.5 h-3.5" />
+    {article.views || 0}
+  </span>
+</div>
 
               {/* Title */}
               <h3 className="font-serif text-xl font-bold text-stone-900">
