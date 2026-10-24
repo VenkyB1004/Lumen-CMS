@@ -43,21 +43,6 @@ const getAuthorFreshnessAlerts = async (req, res) => {
       }
     });
 
-    if (alerts.length === 0) {
-      alerts.push({
-        articleId: 'sample-freshness-review',
-        title: 'LSM-Trees vs B-Trees: The Storage Engine Trade-Offs',
-        ageDays: 330,
-        ageMonths: 11,
-        publishedAt: new Date(Date.now() - 330 * 24 * 60 * 60 * 1000).toISOString(),
-        freshnessScore: 78,
-        isStale: true,
-        scannedCitationsCount: 6,
-        deprecatedFound: ['Kafka 2.8 legacy API'],
-        auditSummary: 'Published 11 months ago. Consider refreshing citations and data points to maintain editorial accuracy.'
-      });
-    }
-
     return res.status(200).json({
       success: true,
       count: alerts.length,

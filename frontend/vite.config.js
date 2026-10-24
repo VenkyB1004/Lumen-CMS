@@ -19,4 +19,29 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          const normalizedId = id.replace(/\\/g, '/');
+          if (normalizedId.includes('/node_modules/')) {
+            if (normalizedId.includes('/react/') || normalizedId.includes('/react-dom/') || normalizedId.includes('/scheduler/')) {
+              return 'react-vendor';
+            }
+            if (normalizedId.includes('/react-router/') || normalizedId.includes('/react-router-dom/') || normalizedId.includes('/@remix-run/')) {
+              return 'router-vendor';
+            }
+            if (normalizedId.includes('/lucide-react/')) return 'icons-vendor';
+          }
+
+          const pagePath = normalizedId.match(/\/src\/pages\/([^/]+)\.(jsx?|tsx?)$/);
+          if (pagePath) {
+            return `page-${pagePath[1].replace(/[^a-zA-Z0-9_-]/g, '-')}`;
+          }
+
+          return undefined;
+        },
+      },
+    },
+  },
 });

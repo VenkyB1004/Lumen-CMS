@@ -13,25 +13,11 @@ const FreshnessAlertBanner = () => {
     const fetchAlerts = async () => {
       try {
         const response = await articleAPI.getFreshnessAlerts();
-        if (isMounted && response.data && response.data.alerts && response.data.alerts.length > 0) {
-          setAlerts(response.data.alerts);
-        } else if (isMounted) {
-          setAlerts([{
-            articleId: 'sample',
-            title: 'Architecting Resilient Distributed Systems',
-            ageMonths: 11,
-            auditSummary: 'Consider reviewing source links and updating statistics to keep your content up to date.'
-          }]);
-        }
-      } catch (err) {
         if (isMounted) {
-          setAlerts([{
-            articleId: 'sample',
-            title: 'Architecting Resilient Distributed Systems',
-            ageMonths: 11,
-            auditSummary: 'Consider reviewing source links and updating statistics to keep your content up to date.'
-          }]);
+          setAlerts(Array.isArray(response.data?.alerts) ? response.data.alerts : []);
         }
+      } catch {
+        if (isMounted) setAlerts([]);
       } finally {
         if (isMounted) setIsLoading(false);
       }
