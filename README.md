@@ -93,21 +93,6 @@ Administrators can verify content and manage the overall platform.
 
 ---
 
-## 🏗️ Project Modules
-
-| Module | Assigned Member |
-|---|---|
-| User Management | Sadanand |
-| Article / Blog | Sanika |
-| Quiz | Shyam |
-| Admin Verification | Poojitha |
-| Content Management | Rakesh |
-| Search & Browse | Unnati |
-| Quiz Attempt & Result + Notification | Ashmitha |
-| Author Performance Analytics | Sameer |
-| Final Integration | Aravind Kumar |
-
----
 
 ## 🛠️ Technology Stack
 
